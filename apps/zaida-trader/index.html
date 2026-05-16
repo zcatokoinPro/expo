@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZAIDA Trade Desk</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>ZAIDA Trade Desk</h1>
+        <p class="muted">A lightweight SPL token trading dashboard inspired by wallet + aggregator UX.</p>
+      </header>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Project snapshot</h2>
+          <ul>
+            <li><strong>Token:</strong> ZAIDA (SPL)</li>
+            <li><strong>Chain:</strong> Solana</li>
+            <li><strong>Contract:</strong> 7uDRKN38QxMRW18fzypGL8dYu9k9XAPZ4h94rAXYEray</li>
+            <li><strong>Focus:</strong> Multi-token ecosystem + animal welfare narrative</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Swap simulator</h2>
+          <form id="swap-form">
+            <label>From token
+              <select id="fromToken">
+                <option>SOL</option>
+                <option>USDC</option>
+                <option>ZAIDA</option>
+              </select>
+            </label>
+            <label>To token
+              <select id="toToken">
+                <option>ZAIDA</option>
+                <option>SOL</option>
+                <option>USDC</option>
+              </select>
+            </label>
+            <label>Amount
+              <input id="amount" type="number" min="0" step="0.0001" value="1" />
+            </label>
+            <button type="submit">Get quote</button>
+          </form>
+          <p id="quote" class="quote">Enter an amount and request a quote.</p>
+        </article>
+
+        <article class="card">
+          <h2>Watchlist</h2>
+          <div id="watchlist"></div>
+        </article>
+
+        <article class="card warning">
+          <h2>Important</h2>
+          <p>This demo does <strong>not</strong> execute real trades. It is a starter UI you can run locally, customize, and later wire to real APIs (Jupiter quote/swap, wallet adapters, and Solana RPC).</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

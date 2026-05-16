@@ -1,0 +1,66 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #0a0f19;
+  color: #f8fbff;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #18243f 0%, #0a0f19 60%);
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.muted {
+  color: #bdd2ff;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: rgba(20, 31, 56, 0.75);
+  border: 1px solid #2a406f;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select, button {
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #36558f;
+  background: #101a2f;
+  color: #f8fbff;
+  padding: 10px;
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(90deg, #2d73ff, #35b8ff);
+  border: none;
+  font-weight: 600;
+}
+
+.quote {
+  margin: 12px 0 0;
+  color: #9fd1ff;
+}
+
+.warning {
+  border-color: #806100;
+  background: rgba(128, 97, 0, 0.15);
+}
