@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZAIDA Trade Desk Pro</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar card">
+        <div>
+          <h1>ZAIDA Trade Desk <span class="badge">PRO DEMO</span></h1>
+          <p class="muted">Jupiter/Phantom-inspired multi-panel trading interface (safe simulation).</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="settingsButton" class="secondary">Settings</button>
+          <button id="walletButton">Connect Wallet</button>
+        </div>
+      </header>
+
+      <section class="layout-grid">
+        <article class="card swap-card">
+          <h2>Swap</h2>
+          <div class="asset-row">
+            <label>From</label>
+            <select id="fromToken"></select>
+            <input id="fromAmount" type="number" min="0" step="0.000001" placeholder="0.0" />
+          </div>
+          <button id="flipButton" class="secondary" aria-label="Flip pair">⇅</button>
+          <div class="asset-row">
+            <label>To</label>
+            <select id="toToken"></select>
+            <input id="toAmount" type="text" readonly placeholder="0.0" />
+          </div>
+
+          <div class="meta-grid">
+            <p>Best route: <span id="bestRoute">—</span></p>
+            <p>Price impact: <span id="priceImpact">—</span></p>
+            <p>Slippage: <span id="slippageLabel">0.50%</span></p>
+            <p>Est. fee: <span id="feeLabel">—</span></p>
+          </div>
+
+          <button id="quoteButton">Get Live-style Quote</button>
+          <button id="swapButton" class="success">Simulate Swap</button>
+          <p id="quoteStatus" class="muted">Connect wallet + enter amount to start.</p>
+        </article>
+
+        <article class="card">
+          <h2>Routes</h2>
+          <div id="routes"></div>
+        </article>
+
+        <article class="card">
+          <h2>Portfolio</h2>
+          <div id="balances"></div>
+        </article>
+
+        <article class="card">
+          <h2>Market Watch</h2>
+          <div id="watchlist"></div>
+        </article>
+
+        <article class="card">
+          <h2>Recent Activity</h2>
+          <div id="activity"></div>
+        </article>
+
+        <article class="card warning">
+          <h2>Safety Notice</h2>
+          <p>This app is a realistic demo shell. No real keys, no real orders, no on-chain transactions are executed.</p>
+        </article>
+      </section>
+    </main>
+
+    <dialog id="settingsDialog">
+      <form method="dialog" class="settings-form">
+        <h3>Trade Settings</h3>
+        <label>Slippage tolerance (%)
+          <input id="slippageInput" type="number" min="0.1" max="10" step="0.1" value="0.5" />
+        </label>
+        <label>Priority fee level
+          <select id="feeTier">
+            <option>Low</option>
+            <option selected>Medium</option>
+            <option>High</option>
+          </select>
+        </label>
+        <menu>
+          <button value="cancel" class="secondary">Cancel</button>
+          <button id="saveSettings" value="default">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
