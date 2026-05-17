@@ -3,63 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZAIDA Trade Desk</title>
+    <title>ZAIDA Trade Desk Pro</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="app">
-      <header>
-        <h1>ZAIDA Trade Desk</h1>
-        <p class="muted">A lightweight SPL token trading dashboard inspired by wallet + aggregator UX.</p>
+    <main class="app-shell">
+      <header class="topbar card">
+        <div>
+          <h1>ZAIDA Trade Desk <span class="badge">PRO DEMO</span></h1>
+          <p class="muted">Jupiter/Phantom-inspired multi-panel trading interface (safe simulation).</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="settingsButton" class="secondary">Settings</button>
+          <button id="walletButton">Connect Wallet</button>
+        </div>
       </header>
 
-      <section class="grid">
-        <article class="card">
-          <h2>Project snapshot</h2>
-          <ul>
-            <li><strong>Token:</strong> ZAIDA (SPL)</li>
-            <li><strong>Chain:</strong> Solana</li>
-            <li><strong>Contract:</strong> 7uDRKN38QxMRW18fzypGL8dYu9k9XAPZ4h94rAXYEray</li>
-            <li><strong>Focus:</strong> Multi-token ecosystem + animal welfare narrative</li>
-          </ul>
+      <section class="layout-grid">
+        <article class="card swap-card">
+          <h2>Swap</h2>
+          <div class="asset-row">
+            <label>From</label>
+            <select id="fromToken"></select>
+            <input id="fromAmount" type="number" min="0" step="0.000001" placeholder="0.0" />
+          </div>
+          <button id="flipButton" class="secondary" aria-label="Flip pair">⇅</button>
+          <div class="asset-row">
+            <label>To</label>
+            <select id="toToken"></select>
+            <input id="toAmount" type="text" readonly placeholder="0.0" />
+          </div>
+
+          <div class="meta-grid">
+            <p>Best route: <span id="bestRoute">—</span></p>
+            <p>Price impact: <span id="priceImpact">—</span></p>
+            <p>Slippage: <span id="slippageLabel">0.50%</span></p>
+            <p>Est. fee: <span id="feeLabel">—</span></p>
+          </div>
+
+          <button id="quoteButton">Get Live-style Quote</button>
+          <button id="swapButton" class="success">Simulate Swap</button>
+          <p id="quoteStatus" class="muted">Connect wallet + enter amount to start.</p>
         </article>
 
         <article class="card">
-          <h2>Swap simulator</h2>
-          <form id="swap-form">
-            <label>From token
-              <select id="fromToken">
-                <option>SOL</option>
-                <option>USDC</option>
-                <option>ZAIDA</option>
-              </select>
-            </label>
-            <label>To token
-              <select id="toToken">
-                <option>ZAIDA</option>
-                <option>SOL</option>
-                <option>USDC</option>
-              </select>
-            </label>
-            <label>Amount
-              <input id="amount" type="number" min="0" step="0.0001" value="1" />
-            </label>
-            <button type="submit">Get quote</button>
-          </form>
-          <p id="quote" class="quote">Enter an amount and request a quote.</p>
+          <h2>Routes</h2>
+          <div id="routes"></div>
         </article>
 
         <article class="card">
-          <h2>Watchlist</h2>
+          <h2>Portfolio</h2>
+          <div id="balances"></div>
+        </article>
+
+        <article class="card">
+          <h2>Market Watch</h2>
           <div id="watchlist"></div>
         </article>
 
+        <article class="card">
+          <h2>Recent Activity</h2>
+          <div id="activity"></div>
+        </article>
+
         <article class="card warning">
-          <h2>Important</h2>
-          <p>This demo does <strong>not</strong> execute real trades. It is a starter UI you can run locally, customize, and later wire to real APIs (Jupiter quote/swap, wallet adapters, and Solana RPC).</p>
+          <h2>Safety Notice</h2>
+          <p>This app is a realistic demo shell. No real keys, no real orders, no on-chain transactions are executed.</p>
         </article>
       </section>
     </main>
+
+    <dialog id="settingsDialog">
+      <form method="dialog" class="settings-form">
+        <h3>Trade Settings</h3>
+        <label>Slippage tolerance (%)
+          <input id="slippageInput" type="number" min="0.1" max="10" step="0.1" value="0.5" />
+        </label>
+        <label>Priority fee level
+          <select id="feeTier">
+            <option>Low</option>
+            <option selected>Medium</option>
+            <option>High</option>
+          </select>
+        </label>
+        <menu>
+          <button value="cancel" class="secondary">Cancel</button>
+          <button id="saveSettings" value="default">Save</button>
+        </menu>
+      </form>
+    </dialog>
 
     <script src="./app.js"></script>
   </body>

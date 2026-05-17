@@ -1,33 +1,39 @@
-# ZAIDA Trade Desk (Starter)
+# ZAIDA Trade Desk Pro Demo
 
-This is a lightweight starter app for a Solana SPL trading dashboard inspired by Jupiter/Phantom style UX.
+A significantly more robust single-page trading simulator inspired by Jupiter/Phantom workflows.
 
-## What it includes
+## Included capabilities
 
-- Project snapshot panel for ZAIDA token context
-- Simple swap quote simulator (demo only)
-- Token watchlist UI
-- Clear warning banner that this is not live trading
+- Wallet-style connect/disconnect interaction
+- Trade settings dialog (slippage + priority fee tier)
+- Route comparison panel with multiple simulated paths
+- Swap panel with pair flipping and estimated output
+- Portfolio balances and market watch sidebars
+- Recent activity feed for simulated swaps
+- Safety notice clarifying this is a non-custodial demo
 
 ## Run locally
 
-From this directory:
-
 ```bash
-python3 -m http.server 4173
+cd apps/zaida-trader
+python3 -m http.server 4180
 ```
 
-Then open:
+Open:
 
-- <http://localhost:4173/index.html>
+- <http://127.0.0.1:4180/index.html>
 
-## Next integrations
+## What this is / is not
 
-- Solana wallet adapters (Phantom/Backpack/Solflare)
-- Jupiter quote + swap APIs
-- Live token prices (Birdeye, Helius, CoinGecko)
-- Transaction history and slippage settings
+- ✅ UX and product shell for feedback/testing
+- ✅ A stronger architecture foundation than the initial basic starter
+- ❌ Not connected to real wallets or Jupiter APIs yet
+- ❌ Not executing real transactions
 
-## Disclaimer
+## Next production integrations
 
-This starter is educational and UI-focused. It does not place real orders.
+1. Solana wallet-adapter integration (Phantom/Solflare/Backpack)
+2. Jupiter quote + swap API integration
+3. On-chain transaction status and explorer deep links
+4. Token metadata/logo list + search
+5. Backend service for caching quotes and route analytics
